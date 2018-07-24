@@ -1,11 +1,17 @@
 package net.atebtech.english.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity(tableName = "category")
 data class Category(
-        var id: Long = 0L,
-        var description: String? = null) {
 
+        @PrimaryKey @ColumnInfo(name = "id")
+        var id: Long = 0L,
+
+        var description: String? = null) {
 
     companion object {
         val ITEMS: MutableList<Category> = ArrayList()

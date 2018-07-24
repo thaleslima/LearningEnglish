@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/player"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="8dp"
     android:outlineProvider="bounds"
-    app:layout_constraintBottom_toTopOf="@+id/main_navigation"
-    android:layout_height="wrap_content">
+    app:layout_constraintBottom_toTopOf="@+id/main_navigation">
 
     <ImageView
         android:id="@+id/play_background_view"
@@ -35,39 +35,41 @@
 
     <TextView
         android:id="@+id/play_description_view"
+        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/app_name"
-        style="@style/TextAppearance.AppCompat.Subhead"
         android:fontFamily="sans-serif-medium"
+        android:text="@string/app_name"
         app:layout_constraintStart_toEndOf="@+id/play_image_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/play_description_aux_view"
+        style="@style/TextAppearance.AppCompat.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="6 Minute English"
-        style="@style/TextAppearance.AppCompat.Caption"
         app:layout_constraintBottom_toBottomOf="@+id/play_image_view"
         app:layout_constraintStart_toEndOf="@+id/play_image_view" />
 
-    <ImageView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/play_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@null"
-        android:padding="4dp"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="mini"
+        app:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play_circle_filled_black_24dp" />
+        app:rippleColor="@color/fab_ripple"
+        app:srcCompat="@drawable/ic_play_arrow_white_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

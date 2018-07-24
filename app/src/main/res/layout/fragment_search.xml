@@ -39,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_text_view"
-        tools:context=".favorites.FavoriteFragment"
+        tools:context=".ui.favorites.FavoriteFragment"
         tools:listitem="@layout/item_list_song" />
 </androidx.constraintlayout.widget.ConstraintLayout>
