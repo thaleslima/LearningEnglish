@@ -6,7 +6,8 @@ import net.atebtech.english.MediaSessionConnection
 import net.atebtech.english.data.AppDatabase
 import net.atebtech.english.data.SongRepository
 import net.atebtech.english.media.MusicService
-import net.atebtech.english.ui.category.SongListViewModel
+import net.atebtech.english.ui.media.SongListViewModel
+import net.atebtech.english.ui.main.MainViewModel
 
 object InjectorUtils {
     private fun provideMediaSessionConnection(context: Context): MediaSessionConnection {
@@ -23,5 +24,12 @@ object InjectorUtils {
         val mediaSessionConnection = provideMediaSessionConnection(applicationContext)
         val repository = getPlantRepository(applicationContext)
         return SongListViewModel.Factory(repository, mediaSessionConnection)
+    }
+
+    fun provideMainViewModelFactory(context: Context): MainViewModel.Factory {
+        val applicationContext = context.applicationContext
+        val mediaSessionConnection = provideMediaSessionConnection(applicationContext)
+        val repository = getPlantRepository(applicationContext)
+        return MainViewModel.Factory(repository, mediaSessionConnection)
     }
 }

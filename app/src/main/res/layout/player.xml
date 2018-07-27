@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/player"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="8dp"
     android:outlineProvider="bounds"
-    app:layout_constraintBottom_toTopOf="@+id/main_navigation">
+    android:visibility="gone"
+    app:layout_constraintBottom_toTopOf="@+id/main_navigation"
+    tools:visibility="visible">
 
     <ImageView
         android:id="@+id/play_background_view"
@@ -36,37 +39,43 @@
     <TextView
         android:id="@+id/play_description_view"
         style="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
+        app:layout_constraintEnd_toStartOf="@+id/play_view"
         app:layout_constraintStart_toEndOf="@+id/play_image_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/play_description_aux_view"
         style="@style/TextAppearance.AppCompat.Caption"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:text="6 Minute English"
         app:layout_constraintBottom_toBottomOf="@+id/play_image_view"
+        app:layout_constraintEnd_toStartOf="@+id/play_view"
         app:layout_constraintStart_toEndOf="@+id/play_image_view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/play_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         app:backgroundTint="@color/colorAccent"
-        app:fabSize="mini"
         app:elevation="2dp"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

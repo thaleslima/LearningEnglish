@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
 import net.atebtech.english.R
-import net.atebtech.english.ui.category.CategoryFragment
+import net.atebtech.english.ui.media.MediaFragment
 import net.atebtech.english.model.Category
 import net.atebtech.english.ui.main.MainActivity
 
@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
     private val adapterList = HomeAdapter {
         val m = requireActivity() as MainActivity
-        m.switchContent(CategoryFragment.newInstance())
+        m.switchContent(MediaFragment.newInstance())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

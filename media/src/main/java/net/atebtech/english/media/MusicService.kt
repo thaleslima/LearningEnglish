@@ -1,19 +1,3 @@
-/*
- * Copyright 2017 Google Inc. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package net.atebtech.english.media
 
 import android.app.PendingIntent
@@ -36,11 +20,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.media.AudioAttributesCompat
 import androidx.media.MediaBrowserServiceCompat
 import net.atebtech.english.media.audiofocus.AudioFocusExoPlayerDecorator
-import net.atebtech.english.media.extensions.flag
-//import net.atebtech.english.media.library.BrowseTree
-//import net.atebtech.english.media.library.JsonSource
-//import net.atebtech.english.media.library.MusicSource
-import net.atebtech.english.media.library.UAMP_BROWSABLE_ROOT
 import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlayer
@@ -70,22 +49,9 @@ class MusicService : MediaBrowserServiceCompat() {
     private lateinit var becomingNoisyReceiver: BecomingNoisyReceiver
     private lateinit var notificationManager: NotificationManagerCompat
     private lateinit var notificationBuilder: NotificationBuilder
-    //private lateinit var mediaSource: MusicSource
     private lateinit var mediaSessionConnector: MediaSessionConnector
 
-    /**
-     * This must be `by lazy` because the source won't initially be ready.
-     * See [MusicService.onLoadChildren] to see where it's accessed (and first
-     * constructed).
-     */
-//    private val browseTree: BrowseTree by lazy {
-//        BrowseTree(mediaSource)
-//    }
-
     private var isForegroundService = false
-
-    private val remoteJsonSource: Uri =
-            Uri.parse("https://storage.googleapis.com/uamp/catalog.json")
 
     private val audioAttributes = AudioAttributesCompat.Builder()
             .setContentType(AudioAttributesCompat.CONTENT_TYPE_MUSIC)
@@ -332,3 +298,4 @@ private class BecomingNoisyReceiver(private val context: Context,
 }
 
 private const val UAMP_USER_AGENT = "uamp.next"
+private const val UAMP_BROWSABLE_ROOT = "/"

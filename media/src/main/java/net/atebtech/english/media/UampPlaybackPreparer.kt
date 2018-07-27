@@ -1,19 +1,3 @@
-/*
- * Copyright 2018 Google Inc. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package net.atebtech.english.media
 
 import android.net.Uri
@@ -28,21 +12,9 @@ import android.util.Log
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
-import com.google.android.exoplayer2.source.ConcatenatingMediaSource
-import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
 import net.atebtech.english.media.extensions.*
-import java.net.URI
 import java.util.concurrent.TimeUnit
-
-/**
- * Class to bridge UAMP to the ExoPlayer MediaSession extension.
- */
-//class UampPlaybackPreparer(
-//        private val musicSource: MusicSource,
-//        private val exoPlayer: ExoPlayer,
-//        private val dataSourceFactory: DataSource.Factory
-//) : MediaSessionConnector.PlaybackPreparer {
 
 class UampPlaybackPreparer(
         private val exoPlayer: ExoPlayer,
@@ -74,7 +46,6 @@ class UampPlaybackPreparer(
      * [MediaSessionCompat.Callback.onPrepareFromMediaId].
      */
     override fun onPrepareFromMediaId(mediaId: String?, extras: Bundle?) {
-
         extras?.let {
             val song = it.getParcelable(EXTRA_MEDIA) as Media?
             if (song == null) {
@@ -90,57 +61,6 @@ class UampPlaybackPreparer(
                 exoPlayer.prepare(mediaSource)
             }
         }
-
-
-//        Log.d("teste", "teste")
-//
-//        val song = JsonMusic()
-//        song.id = "wake_up_01"
-//        song.title = "Intro - The Way Of Waking Up (feat. Alan Watts)"
-//        song.album = "Wake Up"
-//        song.artist = "The Kyoto Connection"
-//        song.genre = "Electronic"
-//        song.source = "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Way_Of_Waking_Up_feat_Alan_Watts.mp3"
-//        song.image = "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/art.jpg"
-//        song.trackNumber = 1
-//        song.totalTrackCount = 13
-//        song.duration = 90
-
-//        val a = MediaMetadataCompat.Builder()
-//                .from(song)
-//                .build()
-//
-//        val b = ArrayList<MediaMetadataCompat>()
-//        b.add(a)
-////        b.add(a)
-//
-//        val mediaSource = b.toMediaSource(dataSourceFactory)
-
-//        musicSource.whenReady {
-//            val itemToPlay: MediaMetadataCompat? = musicSource.find { item ->
-//                item.id == mediaId
-//            }
-//            if (itemToPlay == null) {
-//                Log.w(TAG, "Content not found: MediaID=$mediaId")
-//
-//                // TODO: Notify caller of the error.
-//            } else {
-
-
-//        val metadataList = buildPlaylist(itemToPlay)
-//        val mediaSource = metadataList.toMediaSource(dataSourceFactory)
-//
-//        // Since the playlist was probably based on some ordering (such as tracks
-//        // on an album), find which window index to play first so that the song the
-//        // user actually wants to hear plays first.
-//        val initialWindowIndex = metadataList.indexOf(itemToPlay)
-//
-//        exoPlayer.prepare(mediaSource)
-//        exoPlayer.seekTo(0, 0)
-//
-
-//            }
-        //}
     }
 
 
@@ -208,18 +128,6 @@ class UampPlaybackPreparer(
             extras: Bundle?,
             cb: ResultReceiver?
     ) = Unit
-
-    /**
-     * Builds a playlist based on a [MediaMetadataCompat].
-     *
-     * TODO: Support building a playlist by artist, genre, etc...
-     *
-     * @param item Item to base the playlist on.
-     * @return a [List] of [MediaMetadataCompat] objects representing a playlist.
-     */
-//    private fun buildPlaylist(item: MediaMetadataCompat): List<MediaMetadataCompat> =
-//            musicSource.filter { it.album == item.album }.sortedBy { it.trackNumber }
-
 
     companion object {
         const val EXTRA_MEDIA = "extra_media"

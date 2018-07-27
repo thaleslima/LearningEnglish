@@ -1,6 +1,5 @@
-package net.atebtech.english.ui.category
+package net.atebtech.english.ui.media
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_list_song.view.*
 import net.atebtech.english.R
-import net.atebtech.english.media.extensions.id
 import net.atebtech.english.media.extensions.isPlaying
 import net.atebtech.english.model.Song
 
-class CategoryAdapter(private val itemClickedListener: (Song) -> Unit,
-                      private val playClickedListener: (Song) -> Unit) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class MediaAdapter(private val itemClickedListener: (Song) -> Unit,
+                   private val playClickedListener: (Song) -> Unit) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
     private val dataSet: MutableList<Song> = ArrayList()
     private val onClickListener: View.OnClickListener
     private val onPlayClickListener: View.OnClickListener

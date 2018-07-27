@@ -1,4 +1,4 @@
-package net.atebtech.english.ui.category
+package net.atebtech.english.ui.media
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.fragment_category.*
 import net.atebtech.english.R
 import net.atebtech.english.utilities.InjectorUtils
 
-class CategoryFragment : Fragment() {
+class MediaFragment : Fragment() {
     private lateinit var viewModel: SongListViewModel
 
-    private var adapter: CategoryAdapter = CategoryAdapter({
+    private var adapter: MediaAdapter = MediaAdapter({
 
     }, {
         viewModel.mediaItemClicked(it)
@@ -50,7 +50,7 @@ class CategoryFragment : Fragment() {
         val initialTopPosition = category_recycler_view.top
         with(category_recycler_view) {
             layoutManager = LinearLayoutManager(context)
-            adapter = this@CategoryFragment.adapter
+            adapter = this@MediaFragment.adapter
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
@@ -69,6 +69,6 @@ class CategoryFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = CategoryFragment()
+        fun newInstance() = MediaFragment()
     }
 }

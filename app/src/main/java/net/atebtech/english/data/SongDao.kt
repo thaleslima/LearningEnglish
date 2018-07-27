@@ -14,6 +14,9 @@ interface SongDao {
     @Query("SELECT * FROM song")
     fun getSongs(): LiveData<List<Song>>
 
+    @Query("SELECT * FROM song WHERE id = :id")
+    fun getSongById(id: String): LiveData<Song>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(plants: List<Song>)
 }
